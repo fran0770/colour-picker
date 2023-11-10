@@ -1,1 +1,2 @@
 # colour-picker
+creating a basic web-based tool to allow a user to select a colour from the displayed colour palette. Information about the colour such as its hex and RGB representation will be shown. 
