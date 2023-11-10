@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colour Picker</title>
     <link rel="stylesheet" href="./styles.css">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
 </head>
 <body>
     <h2>Colour Picker</h2>
     <div class="tool">
+        <p>Select the colour using the slider below.</p>
         <div class="colour_display"></div>
         <div class="colour_slider_container">
-            <input type="range" class="slider" min="0" max="16777215">
+            <input type="range" id="slider" min="0" max="360">
         </div>
         
-        <input type="color">
     </div>
 </body>
 </html>
