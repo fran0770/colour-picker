@@ -24,11 +24,12 @@ h2{
 
 .colour_slider_container{
     width: auto;
+    height: 50px;
     margin: 20px auto;
-    background-color: rgb(230, 207, 207);
+    background-color: rgb(132, 132, 132);
 }
 
-.slider{
+#slider{
     width: 350px;
     margin: auto;
     display: block;
@@ -37,4 +38,14 @@ h2{
     appearance: none;
     height: 10px;
     border-radius: 10px;
+}
+
+#slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("./images/white_circle.png");
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    cursor: pointer;
 }
