@@ -35,7 +35,7 @@ define_gradient("hsl(180, 100%, 50%)") //initially display cyan colour
 colour_display.onclick = (e) => {
     let imgData = canvas_context.getImageData(e.offsetX, e.offsetY, 1, 1)
     let rgba = imgData.data
-    rgba = rgba[0] + ", " + rgba[1] + ", " + rgba[2] + ", " + rgba[3]
+    rgba = rgba[0] + ", " + rgba[1] + ", " + rgba[2]
     rgba_display.innerHTML = "rgb: " + rgba
     hex_display.innerHTML = "hex: " + rgb_to_hex(rgba)
 
@@ -46,14 +46,18 @@ let rgb_to_hex = (rgba) => {
     let char
     rgba = rgba.split(",")
     for (let i=0; i<3; i++){
-        console.log(hex)
-        console.log(rgba)
         char = ((parseInt(rgba[i])).toString(16))
         char = char.padStart(2, 0) //pad start of number with zeros to form total two digits
         hex.push(char)
     }
     hex = "#" + hex.join("")
     return hex
+}
+
+let button = document.getElementById("copy")
+button.onclick = () => {
+    navigator.clipboard.writeText(hex_display.innerHTML.slice(5))
+    alert("Colour copied to the clipboard.")
 }
 
 
