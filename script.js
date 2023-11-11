@@ -1,7 +1,8 @@
 let colour_select = document.getElementById("slider")
 let colour_display = document.getElementsByClassName("colour_display")[0]
 let canvas_context = colour_display.getContext("2d")
-let rgba_display = document.getElementById("colour_info")
+let rgba_display = document.getElementById("rgb_info")
+let hex_display = document.getElementById("hex_info")
 
 let set_colour = () => {
     let degrees = colour_select.value
@@ -36,6 +37,8 @@ colour_display.onclick = (e) => {
     let rgba = imgData.data
     rgba = rgba[0] + ", " + rgba[1] + ", " + rgba[2] + ", " + rgba[3]
     rgba_display.innerHTML = "rgb: " + rgba
+    hex_display.innerHTML = "hex: " + rgb_to_hex(rgba)
+
 }
 
 let rgb_to_hex = (rgba) => {
@@ -49,7 +52,7 @@ let rgb_to_hex = (rgba) => {
         char = char.padStart(2, 0) //pad start of number with zeros to form total two digits
         hex.push(char)
     }
-    hex = hex.join("")
+    hex = "#" + hex.join("")
     return hex
 }
 
