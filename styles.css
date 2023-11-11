@@ -20,6 +20,7 @@ h2{
     background-color: blue;
     margin: auto;
     border: 20px 0px;
+    display: block;
 }
 
 .colour_slider_container{
