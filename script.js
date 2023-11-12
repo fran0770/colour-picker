@@ -10,6 +10,20 @@ let set_colour = () => {
     define_gradient(hsl)
 }
 
+let rgb_to_hex = (rgba) => {
+    let hex = []
+    let char
+    rgba = rgba.split(",")
+    for (let i=0; i<3; i++){
+        char = ((parseInt(rgba[i])).toString(16))
+        char = char.padStart(2, 0) //pad start of number with zeros to form total two digits
+        hex.push(char)
+    }
+    hex = "#" + hex.join("")
+    hex = hex.toUpperCase()
+    return hex
+}
+
 colour_select.addEventListener("mouseup", set_colour);
 
 let define_gradient = (hsl) => {
@@ -63,32 +77,24 @@ let set_shades = (rgba) => {
     let shades = document.getElementsByClassName("shade_palette")
     let shade_factor = 1.8
     for (let i=0; i<shades.length; i++){
-        let new_r = rgba[0] * shade_factor
-        let new_g = rgba[1] * shade_factor
-        let new_b = rgba[2] * shade_factor
+        let new_r = Math.round(rgba[0] * shade_factor)
+        let new_g = Math.round(rgba[1] * shade_factor)
+        let new_b = Math.round(rgba[2] * shade_factor)
         shade_factor -= 0.18
-        let sample_rgb = "rgb(" + new_r + "," + new_g + "," + new_b + ")"
+        let sample_rgb = "rgb(" + new_r + "," + new_g + "," + new_b + ")" 
         shades[i].style.backgroundColor = sample_rgb
+        sample_rgb = rgb_to_hex(sample_rgb) //hex colour code 
+        shades[i].onclick = (sample_rgb) => {
+            navigator.clipboard.writeText(sample_rgb)
+            alert("Colour copied to the clipboard.")
+        }
     }
 }
 
 set_shades([64, 128, 128]) //setting initial cyan shades 
 
-let rgb_to_hex = (rgba) => {
-    let hex = []
-    let char
-    rgba = rgba.split(",")
-    for (let i=0; i<3; i++){
-        char = ((parseInt(rgba[i])).toString(16))
-        char = char.padStart(2, 0) //pad start of number with zeros to form total two digits
-        hex.push(char)
-    }
-    hex = "#" + hex.join("")
-    hex = hex.toUpperCase()
-    return hex
-}
-
 let copy_button = document.getElementById("colour_preview")
+
 copy_button.onclick = () => {
     navigator.clipboard.writeText(hex_display.innerHTML.slice(5))
     alert("Colour copied to the clipboard.")
