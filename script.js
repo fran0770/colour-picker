@@ -33,12 +33,23 @@ let define_gradient = (hsl) => {
 define_gradient("hsl(180, 100%, 50%)") //initially display cyan colour 
 
 colour_display.onmousedown = (e) => {
-    let imgData = canvas_context.getImageData(e.offsetX, e.offsetY, 1, 1)
+    let x_coord = e.offsetX
+    let y_coord = e.offsetY
+
+    let imgData = canvas_context.getImageData(x_coord, y_coord, 1, 1)
     let rgba = imgData.data
     rgba = rgba[0] + ", " + rgba[1] + ", " + rgba[2]
     rgba_display.innerHTML = "rgb: " + rgba
     hex_display.innerHTML = "hex: " + rgb_to_hex(rgba)
-    
+
+    canvas_context.strokeStyle = "grey"
+    canvas_context.beginPath()
+    canvas_context.moveTo(x_coord + 10, y_coord)
+    canvas_context.lineTo(x_coord - 10, y_coord)
+    canvas_context.stroke()
+    canvas_context.moveTo(x_coord, y_coord + 10)
+    canvas_context.lineTo(x_coord, y_coord - 10)
+    canvas_context.stroke()
 }
 
 let rgb_to_hex = (rgba) => {
@@ -59,5 +70,7 @@ button.onclick = () => {
     navigator.clipboard.writeText(hex_display.innerHTML.slice(5))
     alert("Colour copied to the clipboard.")
 }
+
+let marker = document.getElementById("marker")
 
 
