@@ -81,7 +81,7 @@ h2{
     border: none;
 }
 
-#colour_preview:hover{
+#colour_preview:hover, .colour_spectrum .shade_palette:hover{
     background-image: url("./images/copy_logo.png");
     background-size: 30px;
     background-repeat: no-repeat;
@@ -104,4 +104,5 @@ h2{
     width: 50px;
     height: 50px;
     display: inline-block;
+    border: none;
 }
