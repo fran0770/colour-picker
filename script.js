@@ -40,8 +40,11 @@ colour_display.onmousedown = (e) => {
     rgba_display.innerHTML = "rgb: " + rgba
     hex_display.innerHTML = "hex: " + rgb_to_hex(rgba)
 
-    canvas_context.clearRect(0, 0, colour_display.width, colour_display.height);
-    set_colour()
+    let preview = document.getElementById("colour_preview")
+    preview.style.backgroundColor = "rgb(" + rgba + ")"
+
+    canvas_context.clearRect(0, 0, colour_display.width, colour_display.height); //clearing entire canvas
+    set_colour() //redrawing gradient on display 
 
     canvas_context.strokeStyle = "grey"
     canvas_context.beginPath()
@@ -52,7 +55,6 @@ colour_display.onmousedown = (e) => {
     canvas_context.moveTo(x_coord, y_coord + 5)
     canvas_context.lineTo(x_coord, y_coord - 5)
     canvas_context.stroke()
-
 }
 
 let rgb_to_hex = (rgba) => {
@@ -73,5 +75,3 @@ button.onclick = () => {
     navigator.clipboard.writeText(hex_display.innerHTML.slice(5))
     alert("Colour copied to the clipboard.")
 }
-
-
