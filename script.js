@@ -71,8 +71,8 @@ let rgb_to_hex = (rgba) => {
     return hex
 }
 
-let button = document.getElementById("copy")
-button.onclick = () => {
+let copy_button = document.getElementById("colour_preview")
+copy_button.onclick = () => {
     navigator.clipboard.writeText(hex_display.innerHTML.slice(5))
     alert("Colour copied to the clipboard.")
 }
