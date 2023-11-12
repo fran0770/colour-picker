@@ -73,6 +73,8 @@ colour_display.onmousedown = (e) => {
     set_shades(rgba)
 }
 
+let snackbar = document.getElementById("snackbar")
+
 let set_shades = (rgba) => {
     let shades = document.getElementsByClassName("shade_palette")
     let shade_factor = 1.8
@@ -83,12 +85,16 @@ let set_shades = (rgba) => {
         shade_factor -= 0.18
         let sample_rgb = "rgb(" + new_r + "," + new_g + "," + new_b + ")" 
         shades[i].style.backgroundColor = sample_rgb
-        sample_rgb = rgb_to_hex(sample_rgb) //hex colour code 
-        shades[i].onclick = (sample_rgb) => {
-            navigator.clipboard.writeText(sample_rgb)
-            alert("Colour copied to the clipboard.")
-        }
+        sample_rgb = rgb_to_hex(new_r + "," + new_g + "," + new_b) //hex colour code
+        shades[i].addEventListener("click", copy_hex.bind(null, sample_rgb))
     }
+}
+
+let copy_hex = (sample_rgb) => {
+    navigator.clipboard.writeText(sample_rgb) 
+    console.log(sample_rgb)
+    snackbar.className = "show"
+    setTimeout(function(){snackbar.className = snackbar.className.replace("show", ""); }, 3000)
 }
 
 set_shades([64, 128, 128]) //setting initial cyan shades 
@@ -97,7 +103,8 @@ let copy_button = document.getElementById("colour_preview")
 
 copy_button.onclick = () => {
     navigator.clipboard.writeText(hex_display.innerHTML.slice(5))
-    alert("Colour copied to the clipboard.")
+    snackbar.className = "show"
+    setTimeout(function(){snackbar.className = snackbar.className.replace("show", ""); }, 3000)
 }
 
 let initial_cross = () => {
