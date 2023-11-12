@@ -8,15 +8,15 @@ h2{
 }
 
 .tool{
-    height: 400px;
+    height: 500px;
     width: 500px;
     margin: auto;
     background-color: rgb(207, 208, 209);
 }
 
-.colour_display{
-    height: 250px;
-    width: 200px;
+#colour_display{
+    height: 150px;
+    width: 300px;
     margin: auto;
     border: 20px 0px;
     display: block;
