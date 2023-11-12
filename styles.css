@@ -31,8 +31,9 @@ h2{
 
 #slider{
     width: 350px;
-    margin: 10px auto;
+    margin: 20px auto;
     display: block;
+    padding: 8px;
     background-image: linear-gradient(to right, rgb(255, 0, 0), rgb(255, 255, 0), rgb(0, 255, 0), rgb(0, 255, 255), rgb(0, 0, 255), rgb(255, 0, 255), rgb(255, 0, 0));
     -webkit-appearance: none;
     appearance: none;
@@ -43,10 +44,10 @@ h2{
 #slider::-webkit-slider-thumb{
     -webkit-appearance: none;
     appearance: none;
-    background-image: url("./images/white_circle.png");
-    height: 20px;
-    width: 20px;
-    border-radius: 10px;
+    background-image: url("./images/white_square.png");
+    height: 30px;
+    width: 10px;
+    /*border-radius: 10px;*/
     cursor: pointer;
 }
 
