@@ -1,6 +1,6 @@
 let colour_select = document.getElementById("slider")
 let colour_display = document.getElementsByClassName("colour_display")[0]
-let canvas_context = colour_display.getContext("2d")
+let canvas_context = colour_display.getContext("2d", { willReadFrequently: true })
 let rgba_display = document.getElementById("rgb_info")
 let hex_display = document.getElementById("hex_info")
 
@@ -32,13 +32,13 @@ let define_gradient = (hsl) => {
 
 define_gradient("hsl(180, 100%, 50%)") //initially display cyan colour 
 
-colour_display.onclick = (e) => {
+colour_display.onmousedown = (e) => {
     let imgData = canvas_context.getImageData(e.offsetX, e.offsetY, 1, 1)
     let rgba = imgData.data
     rgba = rgba[0] + ", " + rgba[1] + ", " + rgba[2]
     rgba_display.innerHTML = "rgb: " + rgba
     hex_display.innerHTML = "hex: " + rgb_to_hex(rgba)
-
+    
 }
 
 let rgb_to_hex = (rgba) => {
