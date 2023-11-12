@@ -82,6 +82,15 @@ let set_shades = (rgba) => {
         let new_r = Math.round(rgba[0] * shade_factor)
         let new_g = Math.round(rgba[1] * shade_factor)
         let new_b = Math.round(rgba[2] * shade_factor)
+        if (new_r > 255){
+            new_r = 255
+        }
+        if (new_g > 255){
+            new_g = 255
+        }
+        if (new_b > 255){
+            new_b = 255
+        }
         shade_factor -= 0.18
         let sample_rgb = "rgb(" + new_r + "," + new_g + "," + new_b + ")" 
         shades[i].style.backgroundColor = sample_rgb
