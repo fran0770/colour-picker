@@ -24,9 +24,8 @@ h2{
 
 .colour_slider_container{
     width: auto;
-    height: 50px;
-    margin: 20px auto;
-    background-color: rgb(132, 132, 132);
+    height: 30px;
+    margin: 30px auto 0px;
 }
 
 #slider{
@@ -48,4 +47,24 @@ h2{
     width: 20px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+#colour_info{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 10px;
+    width: 200px;
+}
+
+#colour_preview{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-color: rgb(0, 255, 255);
+    margin-right: 50px;
+    vertical-align: middle;
+}
+
+#copy{
+    display: block;
 }
