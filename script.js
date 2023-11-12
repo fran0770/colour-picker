@@ -79,12 +79,14 @@ button.onclick = () => {
 let initial_cross = () => {
     canvas_context.strokeStyle = "grey"
     canvas_context.beginPath()
-    canvas_context.moveTo(155, 75) //setting initial cross with centre (150, 75)
-    canvas_context.lineTo(145, 75)
+    let x_value = colour_display.width/2
+    let y_value = colour_display.height / 2
+    canvas_context.moveTo(x_value + 5, y_value) //setting initial cross with centre (400, 250)
+    canvas_context.lineTo(x_value - 5, y_value)
     canvas_context.stroke()
 
-    canvas_context.moveTo(150, 80)
-    canvas_context.lineTo(150, 70)
+    canvas_context.moveTo(x_value, y_value + 5)
+    canvas_context.lineTo(x_value, y_value - 5)
     canvas_context.stroke()
 }
 
