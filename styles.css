@@ -78,15 +78,13 @@ h2{
     margin-right: 50px;
     vertical-align: middle;
     border-radius: 5px;
+    border: none;
 }
 
-#copy{
-    display: block;
-    margin: 5px 20px;
+#colour_preview:hover{
     background-image: url("./images/copy_logo.png");
-    background-size: 20px;
-    background-color: grey;
-    height: 20px;
-    width: 20px;
-    border: none;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;    
+    opacity: 0.5;
 }
