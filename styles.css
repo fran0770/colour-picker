@@ -8,8 +8,8 @@ h2{
 }
 
 .tool{
-    height: 470px;
-    width: 500px;
+    height: 420px;
+    width: 495px;
     margin: auto;
     background-color: rgb(207, 208, 209);
     padding: 20px 0px;
@@ -93,13 +93,15 @@ h2{
     width: 450px;
     height: 50px;
     display: inline-block;
-    margin: 10px 20px;
+    margin: 20px 20px;
+    font-size: 0px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-.colour_spectrum .sample{
+.colour_spectrum .shade_palette{
     background-color: aqua;
     width: 50px;
     height: 50px;
-    border-radius: 5px;
     display: inline-block;
 }
