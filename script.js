@@ -75,3 +75,17 @@ button.onclick = () => {
     navigator.clipboard.writeText(hex_display.innerHTML.slice(5))
     alert("Colour copied to the clipboard.")
 }
+
+let initial_cross = () => {
+    canvas_context.strokeStyle = "grey"
+    canvas_context.beginPath()
+    canvas_context.moveTo(155, 75) //setting initial cross with centre (150, 75)
+    canvas_context.lineTo(145, 75)
+    canvas_context.stroke()
+
+    canvas_context.moveTo(150, 80)
+    canvas_context.lineTo(150, 70)
+    canvas_context.stroke()
+}
+
+initial_cross()
