@@ -36,9 +36,9 @@ colour_display.onmousedown = (e) => {
 
     let imgData = canvas_context.getImageData(x_coord, y_coord, 1, 1)
     let rgba = imgData.data
-    rgba = rgba[0] + ", " + rgba[1] + ", " + rgba[2]
-    rgba_display.innerHTML = "rgb: " + rgba
-    hex_display.innerHTML = "hex: " + rgb_to_hex(rgba)
+    let rgba_all = rgba[0] + ", " + rgba[1] + ", " + rgba[2]
+    rgba_display.innerHTML = "rgb: " + rgba_all
+    hex_display.innerHTML = "hex: " + rgb_to_hex(rgba_all)
 
     let preview = document.getElementById("colour_preview")
     preview.style.backgroundColor = "rgb(" + rgba + ")"
@@ -55,7 +55,24 @@ colour_display.onmousedown = (e) => {
     canvas_context.moveTo(x_coord, y_coord + 5)
     canvas_context.lineTo(x_coord, y_coord - 5)
     canvas_context.stroke()
+
+    set_shades(rgba)
 }
+
+let set_shades = (rgba) => {
+    let shades = document.getElementsByClassName("shade_palette")
+    let shade_factor = 1.8
+    for (let i=0; i<shades.length; i++){
+        let new_r = rgba[0] * shade_factor
+        let new_g = rgba[1] * shade_factor
+        let new_b = rgba[2] * shade_factor
+        shade_factor -= 0.18
+        let sample_rgb = "rgb(" + new_r + "," + new_g + "," + new_b + ")"
+        shades[i].style.backgroundColor = sample_rgb
+    }
+}
+
+set_shades([64, 128, 128]) //setting initial cyan shades 
 
 let rgb_to_hex = (rgba) => {
     let hex = []
