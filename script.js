@@ -67,6 +67,7 @@ let rgb_to_hex = (rgba) => {
         hex.push(char)
     }
     hex = "#" + hex.join("")
+    hex = hex.toUpperCase()
     return hex
 }
 
