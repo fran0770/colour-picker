@@ -12,6 +12,7 @@ h2{
     width: 500px;
     margin: auto;
     background-color: rgb(207, 208, 209);
+    padding: 20px 0px;
 }
 
 #colour_display{
@@ -25,12 +26,12 @@ h2{
 .colour_slider_container{
     width: auto;
     height: 30px;
-    margin: 30px auto 0px;
+    margin: 0px auto 0px;
 }
 
 #slider{
     width: 350px;
-    margin: auto;
+    margin: 10px auto;
     display: block;
     background-image: linear-gradient(to right, rgb(255, 0, 0), rgb(255, 255, 0), rgb(0, 255, 0), rgb(0, 255, 255), rgb(0, 0, 255), rgb(255, 0, 255), rgb(255, 0, 0));
     -webkit-appearance: none;
@@ -67,4 +68,5 @@ h2{
 
 #copy{
     display: block;
+    margin: 5px 20px;
 }
