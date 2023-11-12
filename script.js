@@ -7,8 +7,6 @@ let hex_display = document.getElementById("hex_info")
 let set_colour = () => {
     let degrees = colour_select.value
     let hsl = "hsl(" + degrees + ", 100%, 50%)"
-    colour_display.style.backgroundColor = "red"
-    colour_display.style.backgroundColor = hsl
     define_gradient(hsl)
 }
 
@@ -16,15 +14,16 @@ colour_select.addEventListener("mouseup", set_colour);
 
 let define_gradient = (hsl) => {
     //white gradient (horizontal)
+    console.log(colour_display.width, colour_display.height)
     let gradient = colour_display.getContext("2d").createLinearGradient(0, 0, colour_display.width, 0)
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')
+    gradient.addColorStop(0, 'rgb(255, 255, 255)')
     gradient.addColorStop(1, hsl)
     colour_display.getContext("2d").fillStyle = gradient
     colour_display.getContext("2d").fillRect(0, 0, colour_display.width, colour_display.height)
 
     //black gradient (vertical)
     gradient = colour_display.getContext("2d").createLinearGradient(0, 0, 0, colour_display.height)
-    gradient.addColorStop(0, 'rgba(0, 0, 0, 0)')
+    gradient.addColorStop(0, 'rgba(0, 0, 0, 0)') //invisible black
     gradient.addColorStop(1, 'rgba(0, 0, 0, 1)')
     colour_display.getContext("2d").fillStyle = gradient
     colour_display.getContext("2d").fillRect(0, 0, colour_display.width, colour_display.height)
@@ -44,11 +43,12 @@ colour_display.onmousedown = (e) => {
 
     canvas_context.strokeStyle = "grey"
     canvas_context.beginPath()
-    canvas_context.moveTo(x_coord + 10, y_coord)
-    canvas_context.lineTo(x_coord - 10, y_coord)
+    canvas_context.moveTo(x_coord + 5, y_coord)
+    canvas_context.lineTo(x_coord - 5, y_coord)
     canvas_context.stroke()
-    canvas_context.moveTo(x_coord, y_coord + 10)
-    canvas_context.lineTo(x_coord, y_coord - 10)
+
+    canvas_context.moveTo(x_coord, y_coord + 5)
+    canvas_context.lineTo(x_coord, y_coord - 5)
     canvas_context.stroke()
 }
 
