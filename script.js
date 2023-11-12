@@ -1,5 +1,5 @@
 let colour_select = document.getElementById("slider")
-let colour_display = document.getElementsByClassName("colour_display")[0]
+let colour_display = document.getElementById("colour_display")
 let canvas_context = colour_display.getContext("2d", { willReadFrequently: true })
 let rgba_display = document.getElementById("rgb_info")
 let hex_display = document.getElementById("hex_info")
@@ -14,15 +14,14 @@ colour_select.addEventListener("mouseup", set_colour);
 
 let define_gradient = (hsl) => {
     //white gradient (horizontal)
-    console.log(colour_display.width, colour_display.height)
-    let gradient = colour_display.getContext("2d").createLinearGradient(0, 0, colour_display.width, 0)
+    let gradient = colour_display.getContext("2d").createLinearGradient(0, 0, colour_display.width, 0) 
     gradient.addColorStop(0, 'rgb(255, 255, 255)')
     gradient.addColorStop(1, hsl)
     colour_display.getContext("2d").fillStyle = gradient
-    colour_display.getContext("2d").fillRect(0, 0, colour_display.width, colour_display.height)
+    colour_display.getContext("2d").fillRect(0, 0, colour_display.width, colour_display.height) 
 
     //black gradient (vertical)
-    gradient = colour_display.getContext("2d").createLinearGradient(0, 0, 0, colour_display.height)
+    gradient = colour_display.getContext("2d").createLinearGradient(0, 0, 0, colour_display.height) 
     gradient.addColorStop(0, 'rgba(0, 0, 0, 0)') //invisible black
     gradient.addColorStop(1, 'rgba(0, 0, 0, 1)')
     colour_display.getContext("2d").fillStyle = gradient
@@ -41,6 +40,9 @@ colour_display.onmousedown = (e) => {
     rgba_display.innerHTML = "rgb: " + rgba
     hex_display.innerHTML = "hex: " + rgb_to_hex(rgba)
 
+    canvas_context.clearRect(0, 0, colour_display.width, colour_display.height);
+    set_colour()
+
     canvas_context.strokeStyle = "grey"
     canvas_context.beginPath()
     canvas_context.moveTo(x_coord + 5, y_coord)
@@ -50,6 +52,7 @@ colour_display.onmousedown = (e) => {
     canvas_context.moveTo(x_coord, y_coord + 5)
     canvas_context.lineTo(x_coord, y_coord - 5)
     canvas_context.stroke()
+
 }
 
 let rgb_to_hex = (rgba) => {
@@ -70,7 +73,5 @@ button.onclick = () => {
     navigator.clipboard.writeText(hex_display.innerHTML.slice(5))
     alert("Colour copied to the clipboard.")
 }
-
-let marker = document.getElementById("marker")
 
 
