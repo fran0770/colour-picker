@@ -116,7 +116,8 @@ h2{
     padding: 15px;
     text-align: center;
     bottom: 30px;
-    left: 38%;
+    left: 50%;
+    transform: translateX(-50%);
     position: fixed;
 }
 
